@@ -2,7 +2,7 @@
 #a simple ip sweep
 #parameter one is the start of range, 2 is the end of the range
 #example: ./pingsweep.sh [starting ip] [ending ip]
-#won't span /2
+#won't span /24
 
 network=$(echo $1| cut -d '.' -f1,2,3)
 host=$(echo $1| cut -d '.' -f4)
