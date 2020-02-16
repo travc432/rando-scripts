@@ -29,8 +29,9 @@ cat $unsortedps| sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 > $outFile
 ips=`cat $outDir/pingsweep.txt`
 
 for ip in $ips; do
-	nmapOutFile=$outDir/$ip.xml
-	(nmap $ip -sV -O -oX $nmapOutFile
+	nmapXmlOut=$outDir/$ip.xml
+	nmapNormOut=$outDir/$ip.nmap
+	(nmap $ip -sV -O -oX $nmapXmlOut -oN $nmapNormOut
 	searchsploit -v --nmap $nmapOutFile > $outDir/$ipExploits.txt)&
 done
 wait
